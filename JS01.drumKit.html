@@ -111,10 +111,9 @@
         const knode = document.querySelectorAll('.key')
         const keys = Array.from(knode)
                 //播放聲音
-                window.addEventListener('keydown',playsound)
+        window.addEventListener('keydown',playsound)
 
         keys.forEach((k)=>{
-            k.addEventListener('click',btnshine),
             k.addEventListener('click',playsound)
         })
         //透過click發出正確的聲音
