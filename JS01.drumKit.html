@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drum Kit</title>
+    
+    <style>
+        html{
+            background: url('./imgs/js001.jpeg')bottom center;
+            background-size:cover;
+        }
+        body html{
+            margin: 0;;
+            padding: 0;
+        }
+        .container{
+            margin:3rem;
+        }
+        .row{
+            min-height: 100vh;
+            display: flex;
+            /* flex:1; */
+            justify-content: center;
+            align-items: center;
+        }
+        .key{
+            /* height: 80px; */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 10rem;
+            margin:1rem;
+            padding: 1rem 0.5rem;
+            border: 0.3rem solid #000;
+            border-radius: 5px;
+            /* background-color: rgba(0,0,0,0.7); */
+            text-shadow: 0 0 0.5rem #000;
+        }
+        .playing{
+            box-shadow: 0 0 1.2rem 0.5rem rgba(246, 202, 71, 0.9);
+            transform: scale(1.1);
+            box-shadow: 0 0 1rem #ffc600;box-shadow: 0 0 1rem #ffc600;
+        }
+        kbd{
+            font-size: 2rem;
+            font-family: 'Times New Roman', Times, serif;
+            color:#fff;
+        }
+        .key span{
+            color:rgba(246, 202, 71, 0.7);
+            font-family: 'Times New Roman', Times, serif;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            margin-top: 0.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div data-key="65" class="key">
+                <kbd>A</kbd>
+                <span class="sound">clap</span>
+            </div>
+            <div data-key="83" class="key">
+                <kbd>S</kbd>
+                <span class="sound">hihat</span>
+            </div>
+            <div data-key="68" class="key">
+                <kbd>D</kbd>
+                <span class="sound">kick</span>
+            </div>
+            <div data-key="70" class="key">
+                <kbd>F</kbd>
+                <span class="sound">openhat</span>
+            </div>
+            <div data-key="71" class="key">
+                <kbd>G</kbd>
+                <span class="sound">boom</span>
+            </div>
+            <div data-key="72" class="key">
+                <kbd>H</kbd>
+                <span class="sound">ride</span>
+            </div>
+            <div data-key="74" class="key">
+                <kbd>J</kbd>
+                <span class="sound">snare</span>
+            </div>
+            <div data-key="75" class="key">
+                <kbd>K</kbd>
+                <span class="sound">tom</span>
+            </div>
+            <div data-key="76" class="key">
+                <kbd>L</kbd>
+                <span class="sound">tink</span>
+            </div>
+            <audio data-key="65" src="./sounds/clap.wav"></audio>
+            <audio data-key="83" src="./sounds/hihat.wav"></audio>
+            <audio data-key="68" src="./sounds/kick.wav"></audio>
+            <audio data-key="70" src="./sounds/openhat.wav"></audio>
+            <audio data-key="71" src="./sounds/boom.wav"></audio>
+            <audio data-key="72" src="./sounds/Ride.wav"></audio>
+            <audio data-key="74" src="./sounds/snare.wav"></audio>
+            <audio data-key="75" src="./sounds/tom.wav"></audio>
+            <audio data-key="76" src="./sounds/tink.wav"></audio>
+        </div>
+    </div>
+    <script>
+        const knode = document.querySelectorAll('.key')
+        const keys = Array.from(knode)
+                //播放聲音
+                window.addEventListener('keydown',playsound)
+
+        keys.forEach((k)=>{
+            k.addEventListener('click',btnshine),
+            k.addEventListener('click',playsound)
+        })
+        //透過click發出正確的聲音
+        function playsound(e){
+            let currentkey = e.keyCode||this.getAttribute('data-key');
+            const key = document.querySelector(`div[data-key="${currentkey}"]`)
+            const audio = document.querySelector(`audio[data-key="${currentkey}"]`)
+            //如果audio不存在，則什麼都不做
+            if(!audio) return;
+        key.classList.add('playing');
+            setTimeout(()=>{
+                key.classList.remove('playing')
+            },70)
+            audio.play()
+        }
+        //按鍵閃亮
+        function btnshine(e){
+            
+        }
+
+        //測試每個案件的keycode
+        // const body = document.body;
+        // function f1(e){
+        //     console.log(e.keyCode)
+        // }
+        // body.addEventListener('keydown',f1,false);
+        
+        // }
+        
+    </script>
+</body>
+</html>
