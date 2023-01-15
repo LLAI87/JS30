@@ -108,7 +108,9 @@
         </div>
     </div>
     <script>
+        //queryselectorAll 抓下來的是NODELIST
         const knode = document.querySelectorAll('.key')
+        //轉換成Array以後才能使用addEventListener
         const keys = Array.from(knode)
                 //播放聲音
         window.addEventListener('keydown',playsound)
