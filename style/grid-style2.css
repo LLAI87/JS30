@@ -1,0 +1,36 @@
+body{
+    /* margin: 0; */
+    /* padding: 0; */
+}
+.grid-container{
+    display: grid;
+    /* margin: 0; */
+    grid-template-columns: minmax(0, 1fr) minmax(0, 4fr)  ;/* 任何單位都可以使用px/rem/vh...*/
+    grid-auto-rows: minmax(150px, auto); /*沒設定高度的會給100px高*/
+    gap:  20px;
+}
+.grid-item{
+    background-color: #faf;
+    border: 2px solid lightskyblue;
+    /* height: 100px; */
+}
+.grid-item1{
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+.grid-item2{
+    grid-column-start: 2;
+    grid-column-end: 4;  /* 3與-1樣式會一樣 */
+    /* grid-column-end: 3; 3與-1樣式會一樣 */
+}
+.grid-item3{
+    grid-column: 1/2;
+    grid-row: 2/4;
+}
+.grid-item4{
+    grid-column: 2/3;
+}
+.grid-item5{
+    grid-column: 3/4;
+
+}

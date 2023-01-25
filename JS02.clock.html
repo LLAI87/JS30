@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <link rel="stylesheet" href="./style/clock.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+    <style>
+        body{
+            background-color: #2c2b2b;
+        }
+       
+
+    </style>
+</head>
+<body>
+    <div class="container d-flex justify-content-center">
+        <div class="row mt-5 d-flex flex-column align-items-center">
+            <div class="col">
+                <div class="aclock">
+                    <div class="outer-clock-face">
+                        
+                        <div class="marking mk1"></div>
+                        <div class="marking mk2"></div>
+                        <div class="marking mk3"></div>
+                        <div class="marking mk4"></div>
+                        <div class="marking mk5"></div>
+                        <div class="marking mk6"></div>
+                        
+                    </div>
+                    <div class="inner-clock-face"></div>
+                    <div class="hour-hand"></div>
+                    <div class="min-hand"></div>
+                    <div class="sec-hand"></div>
+                </div>
+            </div>
+            
+            <div class="col mt-5">
+                <div class="dclock">
+                    <div class="year digital-face"></div>
+                    <div class="month digital-face"></div>
+                    <div class="date digital-face"></div>
+                    <div class="hour digital-face"></div>
+                    <div class="minute digital-face"></div>
+                    <div class="second digital-face"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+const hHand = document.querySelector('.hour-hand')
+const mHand = document.querySelector('.min-hand')
+const sHand = document.querySelector('.sec-hand')
+
+setInterval(myDate, 1000) //定時器，前面是cbf，後面是執行秒數
+function myDate(){
+    const now = new Date();
+    const Y = now.getFullYear();
+    const M = now.getMonth();
+    const D = now.getDate();
+    const s = now.getSeconds();
+    const m = now.getMinutes();
+    const h = now.getHours()
+    // console.log(h,m,s)
+    let sDegree = ((s/60)*360);
+    let mDegree = (m*6);
+    let hDegree = (h*30)+(m/2);
+    // console.log(sDegree)
+    sHand.style.transform = `rotate(${sDegree}deg)`
+    mHand.style.transform = `rotate(${mDegree}deg)`
+    hHand.style.transform = `rotate(${hDegree}deg)`
+
+    //數位時鐘
+    const dYear = document.querySelector('.year')
+    const dMonth = document.querySelector('.month')
+    const dDay = document.querySelector('.date')
+    const dHour = document.querySelector('.hour')
+    const dMinute = document.querySelector('.minute')
+    const dSecond = document.querySelector('.second')
+    dYear.innerHTML = Y;
+    dMonth.innerHTML = (M+1);
+    dDay.innerHTML = D;
+    dHour.innerHTML = h;
+    dMinute.innerHTML = m;
+    dSecond.innerHTML = s;
+    console.log(M)
+}
+
+    </script>
+</body>
+</html>

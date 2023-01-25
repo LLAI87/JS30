@@ -1,0 +1,33 @@
+.grid-container{
+    display: grid;
+    grid-template-columns: 1fr 2fr ;/* 任何單位都可以使用px/rem/vh...*/
+    /* grid-template-columns: repeat(4, 100px); 相等於寫四次100px */
+    /* grid-template-rows: 200px 100px ; 第三排沒設定高度 */
+    grid-auto-rows: minmax(150px, auto); /*沒設定高度的會給100px高*/
+    gap: 10px 20px;
+    grid-template-areas: 
+    "header header"
+    "index content"
+    ;
+}
+.grid-item{
+    background: #faf;
+    border: 1px solid grey;
+    /* height: 100px; */
+}
+.grid-item1{
+    grid-area: header;
+}
+.grid-item2{
+    grid-area: content;
+}
+.grid-item3{
+    grid-area: index;
+}
+.grid-item4{
+
+}
+.grid-item5{
+    text-overflow:ellipsis;
+    /* overflow: hidden; */
+}
